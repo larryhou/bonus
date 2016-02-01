@@ -60,5 +60,5 @@ line remain salary, xsize(9.2) ysize(5)
 	text(`=T[6,6]' `=T[6,1]' "`t6'", size(vsmall) placement(nw) orient(vertical))
 ;
 
-//#delimit cr
-//graph export salary-gain.pdf, as(pdf) replace
+#delimit cr
+graph export salary-gain.pdf, as(pdf) replace
