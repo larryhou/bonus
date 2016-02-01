@@ -1,16 +1,16 @@
-insheet using bonus.txt, clear
-format %7.0fc 月区间 扣除数
-format %9.0fc 总区间
+insheet using data.txt, clear
+format %7.0fc 工资区间 扣除数
+format %9.0fc 奖金区间
 format %3.2f 税率
 list 
 
-gen 盲点 = ((总区间[_n] * (1 - 税率[_n]) + 扣除数[_n]) - 扣除数[_n + 1]) / (1 - 税率[_n + 1]), a(总区间)
+gen 盲点 = ((奖金区间[_n] * (1 - 税率[_n]) + 扣除数[_n]) - 扣除数[_n + 1]) / (1 - 税率[_n + 1]), a(奖金区间)
 format %9.0fc 盲点
 
-gen 盲距 = 盲点 - 总区间, a(盲点)
+gen 盲距 = 盲点 - 奖金区间, a(盲点)
 format %8.0fc 盲距
 
-gen 税后 = 总区间[_n] - (总区间[_n] * 税率[_n] - 扣除数[_n])
+gen 税后 = 奖金区间[_n] - (奖金区间[_n] * 税率[_n] - 扣除数[_n])
 format %9.0fc 税后
 list
 
